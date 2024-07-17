@@ -1,0 +1,49 @@
+{% extends 'navbar.html' %}
+{%block nav%}
+<br><br><br>
+<h1 class="text-center text-info">My order</h1>
+
+{% for i in orders %}
+
+<div class="p-5">
+        
+    <div class=" shadow rounded row mb-3 container-fluid">
+        <div class="col-4 p-3">
+            <img src="{{i.product.image.url}}" class="img-fluid" style="height: 250px; width: 300px;"  alt="p_image">
+
+        </div>
+        <div class="col-8 ">
+            
+            <h1>{{i.product.title}}</h1>
+            <h5>Rs: {{i.product.price}}</h5>
+            <h5>Phone: {{i.phone}}</h5>
+            <h5>Address: {{i.address}}</h5>
+            <h5>Date: {{i.date}}</h5>
+
+
+            {% if i.order_status == 'Order Placed' or i.order_status == 'Shipped' or i.order_status == 'Out For Delivery' %}
+            <h4 class="text-info"><i class="fa-solid fa-square-check fa-beat" style="color: #11e446;"></i>  {{i.order_status}}
+            </h4>
+            <a href="{% url 'corder' i.id %}" class="btn btn-danger" onclick="Are ">Cancel Order</a>
+            {%endif%}
+            {% if i.order_status == 'Delivered' %}
+            <h4 class="text-success">  {{i.order_status}}
+
+            </h4>
+            {%endif%}
+
+            {% if i.order_status == 'Cancelled' %}
+            <h4 class="text-danger">  {{i.order_status}}
+            </h4>
+            {%endif%}
+
+
+        </div>
+    </div>
+</div>
+
+{%endfor%}
+
+
+
+{%endblock nav%}

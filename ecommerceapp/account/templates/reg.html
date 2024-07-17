@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+{% block index %}
+                <!-- <form action="" method="post">
+                    {% csrf_token %}
+                    <table class="table"> -->
+                        {{form.as_table}}
+                    <!-- </table> -->
+                    <button class="btn btn-success">Submit</button>
+                    <a href="{% url 'reg' %}" class="btn btn-info">Register</a>
+                </form>
+
+{% endblock index %}                
+         
